@@ -27,10 +27,10 @@ my_dict['list'].append('six')
 my_dict['list'].remove('two')
 
 # Для того, что хранится под ключом ‘dict’:
-#   - добавьте элемент с ключом ('i am a tuple') и любым значением
+#   - добавьте элемент с ключом ('i am a tuple',) и любым значением
 #   - удалите какой-нибудь элемент
 
-my_dict['dict'].update({'i am a tuple': 'WTF'})
+my_dict['dict'][('i am a tuple',)] = 'WTF'
 my_dict['dict'].pop('country')
 
 # Для того, что хранится под ключом ‘set’:
