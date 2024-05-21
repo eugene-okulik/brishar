@@ -9,9 +9,9 @@ text = ('Etiam tincidunt neque erat, quis molestie enim imperdiet vel. '
 # print(text.split())
 
 new_text = []
-for i in text.split():
-    if i[-1] in ',.':
-        new_text.append(i[:-1] + 'ing' + i[-1:])
+for word in text.split():
+    if word[-1] in ',.':
+        new_text.append(word[:-1] + 'ing' + word[-1:])
     else:
-        new_text.append(i + 'ing')
+        new_text.append(word + 'ing')
 print(' '.join(new_text))
