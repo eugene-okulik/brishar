@@ -18,7 +18,8 @@ cursor.execute(query, values)
 student_id = cursor.lastrowid  # сохраняем id студента в переменную
 
 # Создаем группу
-query = "INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)"
+query = \
+    "INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)"
 values = ('The Killers1', 'may 2024', 'aug 2024')
 cursor.execute(query, values)
 group_id = cursor.lastrowid  # сохраняем id группы в переменную
@@ -93,7 +94,8 @@ cursor.execute(query, (student_id,))
 print("Все книги, которые находятся у студента:", cursor.fetchall())
 
 # Для нашего студента выводим всё, что о нем есть в базе:
-# группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join)
+# группа, книги, оценки с названиями занятий и предметов
+# (всё одним запросом с использованием Join)
 query = '''
 SELECT 
     s.name, 
