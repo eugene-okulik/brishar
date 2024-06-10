@@ -96,37 +96,38 @@ print("Все книги, которые находятся у студента:
 # Для нашего студента выводим всё, что о нем есть в базе:
 # группа, книги, оценки с названиями занятий и предметов
 # (всё одним запросом с использованием Join)
-query = '''
-SELECT 
-    s.name, 
-    s.second_name, 
-    g.title AS group_title, 
-    GROUP_CONCAT(DISTINCT b.title ORDER BY b.title SEPARATOR ', ') AS book_titles, 
-    sub.title AS subject_title, 
-    l.title AS lesson_title, 
+query = """
+SELECT
+    s.name,
+    s.second_name,
+    g.title AS group_title,
+    GROUP_CONCAT
+        (DISTINCT b.title ORDER BY b.title SEPARATOR ', ') AS book_titles,
+    sub.title AS subject_title,
+    l.title AS lesson_title,
     m.value AS mark_value
-FROM 
+FROM
     students s
-LEFT JOIN 
+LEFT JOIN
     `groups` g ON s.group_id = g.id
-LEFT JOIN 
+LEFT JOIN
     books b ON s.id = b.taken_by_student_id
-LEFT JOIN 
+LEFT JOIN
     marks m ON s.id = m.student_id
-LEFT JOIN 
+LEFT JOIN
     lessons l ON m.lesson_id = l.id
-LEFT JOIN 
-    subjets sub ON l.subject_id = sub.id
-WHERE 
+LEFT JOIN
+    subjects sub ON l.subject_id = sub.id
+WHERE
     s.id = %s
-GROUP BY 
-    s.name, 
-    s.second_name, 
-    g.title, 
-    sub.title, 
-    l.title, 
+GROUP BY
+    s.name,
+    s.second_name,
+    g.title,
+    sub.title,
+    l.title,
     m.value
-'''
+"""
 
 cursor.execute(query, (student_id,))
 student_info = cursor.fetchall()
