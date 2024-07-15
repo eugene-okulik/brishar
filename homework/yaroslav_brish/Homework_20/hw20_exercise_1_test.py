@@ -50,7 +50,7 @@ def test_add_object(body, start_testing, testcase_borders):
         response_data = response.json()
     with allure.step('Verify that response code is 200'):
         assert response.status_code == 200, (f"Expected 200, "
-                                         f"got {response.status_code}")
+                                             f"got {response.status_code}")
     with allure.step('Verify that name matches "name" in request'):
         assert response_data["name"] == body["name"], "Names do not match"
 
