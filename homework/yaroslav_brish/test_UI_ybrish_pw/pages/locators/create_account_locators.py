@@ -1,0 +1,8 @@
+first_name_loc = '//*[@id="firstname"]'
+last_name_loc = '//*[@id="lastname"]'
+email_loc = '//*[@id="email_address"]'
+password_loc = '//*[@id="password"]'
+confirm_password_loc = '//*[@id="password-confirmation"]'
+create_button_loc = '//button[@title="Create an Account"]'
+alert_loc = '//*[contains(@data-bind, "prepareMessageForHtml")]'
+password_strength_loc = '//*[@id="password-strength-meter-label"]'
