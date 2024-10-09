@@ -5,8 +5,10 @@ def test_create_account_with_existing_email(create_account_page):
     create_account_page.enter_email('test@test.com')
     create_account_page.enter_password('Test@123')
     create_account_page.confirm_password('Test@123')
-    create_account_page.click_button()
-    create_account_page.check_alert_appears()
+    create_account_page.click_create_button()
+    create_account_page.check_alert_appears(
+        "There is already an account with this email address"
+    )
 
 
 def test_weak_password(create_account_page):

@@ -26,15 +26,13 @@ class CreateAccount(BasePage):
         confirm_password_field = self.find(loc.confirm_password_loc)
         confirm_password_field.press_sequentially(password, delay=150)
 
-    def click_button(self):
+    def click_create_button(self):
         self.find(loc.create_button_loc).click()
 
-    def check_alert_appears(self):
+    def check_alert_appears(self, alert_text):
         self.page.wait_for_selector(loc.alert_loc, timeout=5000)
         locator = self.find(loc.alert_loc)
-        expect(locator).to_contain_text(
-            "There is already an account with this email address"
-        )
+        expect(locator).to_contain_text(alert_text)
 
     def check_password_is_weak(self, password):
         self.enter_password(password)
